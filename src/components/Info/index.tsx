@@ -1,16 +1,7 @@
-import { BsCloud, BsCloudDrizzle, BsCloudRain, BsSun } from 'react-icons/bs'
+import { WeatherData } from '../../App'
 import { IoMdWater } from 'react-icons/io'
 import { FiWind } from 'react-icons/fi'
-
-import { WeatherData } from '../../App'
-
-const NOTIFICATION_STATES = {
-  clouds: <BsCloud className="w-20 h-20 fill-stroke text-sky-400" />,
-  drizzle: <BsCloudDrizzle className="w-20 h-20 fill-stroke text-gray-200" />,
-  clear: <BsSun className="w-20 h-20 fill-stroke text-yellow-400" />,
-  rain: <BsCloudRain className="w-20 h-20 fill-stroke text-gray-600" />,
-}
-
+import States from './States'
 interface InfoProps {
   data: WeatherData | null
 }
@@ -34,7 +25,7 @@ const InfoWithData = (data: WeatherData) => {
       <div className="my-6">
         <div className="flex flex-row space-x-4">
           <div className="flex flex-col w-full items-center">
-            <span>{NOTIFICATION_STATES[data.main.toLocaleLowerCase()]}</span>
+            <States main={data.main} />
             <span className="mt-2 font-bold">{data.main}</span>
           </div>
           <div className="flex flex-col">
